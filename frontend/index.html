@@ -1,9 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<link rel="stylesheet" href="style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supabase Data Insert</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script defer src="client.js"></script>
+</head>
 <body>
-
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
-
+    <div class="container">
+        <h2>Add Player</h2>
+        <input type="text" id="name" placeholder="Player Name" required>
+        <input type="number" id="level" placeholder="Level" required>
+        <button id="insertButton">Insert Player</button>
+        <div class="message" id="message"></div>
+    </div>
 </body>
 </html>
