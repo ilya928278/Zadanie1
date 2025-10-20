@@ -3,5 +3,7 @@ create table public."UserData" (
   account_creation_date timestamp with time zone not null default now(),
   name text not null,
   level integer not null,
+  money integer not null default 0,
+  health integer not null default 100,
   constraint UserData_pkey primary key (id)
 ) TABLESPACE pg_default;

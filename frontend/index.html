@@ -5,18 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entity Management</title>
     <link rel="stylesheet" href="style.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script defer src="client.js"></script>
 </head>
 <body>
     <div class="container">
+        <h1>Entity Management</h1>
+
         <div class="form-group">
             <input type="text" id="id" placeholder="Entity ID">
         </div>
+
         <div class="form-group">
             <input type="text" id="name" placeholder="Name">
             <input type="number" id="level" placeholder="Level">
         </div>
+
+        <div class="form-group">
+            <input type="number" id="money" placeholder="Money">
+            <input type="number" id="health" placeholder="Health">
+        </div>
+
         <div class="button-group">
             <button id="fetchAll">Fetch all</button>
             <button id="fetchById">Fetch by ID</button>

@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const nameInput = document.getElementById("name");
     const levelInput = document.getElementById("level");
+    const moneyInput = document.getElementById("money");
+    const healthInput = document.getElementById("health");
     const idInput = document.getElementById("id");
     const messageDiv = document.getElementById("message");
 
@@ -61,7 +63,12 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             const name = nameInput.value.trim();
             const level = parseInt(levelInput.value);
-            if (!name || isNaN(level)) return showMessage("Invalid name or level", true);
+            const money = parseInt(moneyInput.value);
+            const health = parseInt(healthInput.value);
+
+            if (!name || isNaN(level) || isNaN(money) || isNaN(health))
+                return showMessage("Invalid input values", true);
+
             const res = await fetch(`${supabaseUrl}/rest/v1/UserData`, {
                 method: "POST",
                 headers: {
@@ -70,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     "Content-Type": "application/json",
                     "Prefer": "return=representation"
                 },
-                body: JSON.stringify([{ name, level }])
+                body: JSON.stringify([{ name, level, money, health }])
             });
             if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
             const data = await res.json();
@@ -85,7 +92,12 @@ document.addEventListener("DOMContentLoaded", () => {
             const id = idInput.value.trim();
             const name = nameInput.value.trim();
             const level = parseInt(levelInput.value);
-            if (!id || !name || isNaN(level)) return showMessage("Invalid ID, name, or level", true);
+            const money = parseInt(moneyInput.value);
+            const health = parseInt(healthInput.value);
+
+            if (!id || !name || isNaN(level) || isNaN(money) || isNaN(health))
+                return showMessage("Invalid ID, name, level, money, or health", true);
+
             const res = await fetch(`${supabaseUrl}/rest/v1/UserData?id=eq.${id}`, {
                 method: "PATCH",
                 headers: {
@@ -94,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     "Content-Type": "application/json",
                     "Prefer": "return=representation"
                 },
-                body: JSON.stringify({ name, level })
+                body: JSON.stringify({ name, level, money, health })
             });
             if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
             const data = await res.json();
